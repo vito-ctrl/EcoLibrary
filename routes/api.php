@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BookController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -12,4 +13,5 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
-Route::apiResource('/admin', CategoryController::class);
+Route::apiResource('/category', CategoryController::class);
+Route::apiResource('/book', BookController::class);
