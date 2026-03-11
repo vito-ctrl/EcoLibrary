@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -14,25 +15,19 @@ class CategoryController extends Controller
         ], 201);
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'name' => 'required|string|max:250',
-            'description' => 'required|string',
-        ]);
+    public function store(CategoryRequest $request){
         
-        $category = Category::create([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
+        $category = Category::create($request->validated());
 
         return response()->json([
-            "message" => "category saved succefully",
-            "category" => $category
-        ]);
+            'success' => true,
+            'message' => 'Category created successfully',
+            'data' => $category
+        ], 201);
     }
 
-    public function update(){
-
+    public function update(CategoryRequest $request, $id){
+        
     }
 
     public function destroy(){
