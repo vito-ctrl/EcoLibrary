@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
@@ -20,5 +21,14 @@ class BookController extends Controller
             "success" => true,
             "data" => $books
         ]);
+    }
+
+    public function store(BookRequest $request) {
+        $book = Book::create($request->validated());
+
+        return response()->json([
+            'message' => 'book created succefuly',
+            'data' => $book,
+        ], 201);
     }
 }
