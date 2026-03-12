@@ -24,7 +24,7 @@ class BookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:250',
+            'title' => 'required|string|max:250|unique:books,title,' . $this->route('book'),
             'author' => 'required|string|max:100',
             'description' => 'required|string',
             'published_year' => 'required|date',
