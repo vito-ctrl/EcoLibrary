@@ -73,4 +73,18 @@ class BookController extends Controller
             "books" => $books
         ], 201);
     }
+
+    public function search(Request $request){
+        $query = $request->title;
+
+        $book = Book::where('title', 'like', "%$query%")->get();
+
+        return response()->json([
+            "book" => $book,
+        ], 201);
+    }
+
+    // public function popular () {
+
+    // }
 }
