@@ -77,14 +77,20 @@ class BookController extends Controller
     public function search(Request $request){
         $query = $request->title;
 
-        $book = Book::where('title', 'like', "%$query%")->get();
+        $books = Book::where('title', 'like', "%$query%")->get();
 
         return response()->json([
-            "book" => $book,
+            "books" => $book,
         ], 201);
     }
 
-    // public function popular () {
+    public function popular () {
+        $books = Book::orderBy('views', 'desc')->take(5)->get();
 
-    // }
+        return response()->json([
+            "books" => $books,
+        ], 201);
+    }
+
+    
 }
