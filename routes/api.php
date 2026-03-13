@@ -23,3 +23,4 @@ Route::get('/books/search', [BookController::class, 'search']);
 
 Route::get('/books/popular', [BookController::class, 'popular']);
 
+Route::get('/books/new', [BookController::class, 'newArrivals']);

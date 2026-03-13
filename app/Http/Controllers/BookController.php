@@ -92,5 +92,11 @@ class BookController extends Controller
         ], 201);
     }
 
-    
+    public function newArrivals () {
+        $books = Book::latest()->get();
+
+        return response()->json([
+            "books" => $books,
+        ], 201);
+    }
 }
