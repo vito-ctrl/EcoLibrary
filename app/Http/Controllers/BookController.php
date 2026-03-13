@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Category;
 use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
@@ -62,6 +63,14 @@ class BookController extends Controller
         return response()->json([
             'message' => 'book deleted succefuly',
             'data' => $book,
+        ], 201);
+    }
+
+    public function getByCategory($id){
+        $books = Category::findOrFail($id)->books;
+
+        return response()->json([
+            "books" => $books
         ], 201);
     }
 }

@@ -15,3 +15,6 @@ Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logo
 
 Route::apiResource('/category', CategoryController::class);
 Route::apiResource('/book', BookController::class);
+
+
+Route::get('/category/{id}/book', [BookController::class, 'getByCategory']);

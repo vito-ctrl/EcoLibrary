@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('author');
             $table->text('description')->nullable();
             $table->date('published_year')->nullable();
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->integer('views')->default(0);
+            $table->integer('degraded_copies')->default(0);
+            $table->integer('total_copies')->default(1);
             $table->timestamps();
         });
     }

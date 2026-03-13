@@ -12,7 +12,10 @@ class Book extends Model
         'author',
         'description',
         'published_year',
-        'category_id'
+        'category_id',
+        'views',
+        'degraded_copies',
+        'total_copies'
     ];
 
     public function categories(){

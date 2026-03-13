@@ -28,7 +28,10 @@ class BookRequest extends FormRequest
             'author' => 'required|string|max:100',
             'description' => 'required|string',
             'published_year' => 'required|date',
-            'category_id' => 'required'
+            'category_id' => 'required|integer',
+            'views' => 'integer|max:50',
+            'total_copies' => 'integer|max:200',
+            'degraded_copies' => 'integer|lte:total_copies',
         ];
     }
 
